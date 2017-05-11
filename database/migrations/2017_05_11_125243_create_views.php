@@ -13,7 +13,13 @@ class CreateViews extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('views', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('pid')->unsigned();
+            $table->integer('views');
+            $table->timestamps();
+            $table->foreign('pid')->references('id')->on('image_gallery');
+        });
     }
 
     /**
@@ -23,6 +29,6 @@ class CreateViews extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('views');
     }
 }

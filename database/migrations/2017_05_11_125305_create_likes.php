@@ -13,7 +13,13 @@ class CreateLikes extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('likes', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('pid')->unsigned();
+            $table->integer('likes');
+            $table->timestamps();
+            $table->foreign('pid')->references('id')->on('image_gallery');
+        });
     }
 
     /**
@@ -23,6 +29,6 @@ class CreateLikes extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('likes');
     }
 }
