@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/policy', function () {
-    return view('policy');
+Route::get('/admin', function () {
+    return view('admin');
 });
 
 Route::get('/term', function () {
