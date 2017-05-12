@@ -4,11 +4,14 @@
 
 @section('content')
 <div class="row">
+	<p>
+		<a href="/addPics" class="btn btn-lg btn-success">Add New Image </a>
+	</p>
 	<table id="example2" class="table table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th>Rank</th>
-                        <th>Fullname</th>
+                        <th>Id</th>
+                        <th>Title</th>
                         <th>Score </th>                        
                       </tr>
                     </thead>

@@ -23,6 +23,9 @@ Route::get('/viewTable', function () {
     return view('viewAllPics');
 });
 
+Route::get('/addPics', function () {
+    return view('addPics');
+});
 Route::get('image-gallery', 'ImageGalleryController@index');
 Route::post('image-gallery', 'ImageGalleryController@upload');
 Route::delete('image-gallery/{id}', 'ImageGalleryController@destroy');

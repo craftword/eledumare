@@ -32,7 +32,7 @@
                         <a href="/admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="/views"><i class="fa fa-fw fa-table"></i> View All Gallery</a>
+                        <a href="/viewTable"><i class="fa fa-fw fa-table"></i> View All Gallery</a>
                     </li>
                     <li>
                         <a href="/addPics"><i class="fa fa-fw fa-camera"></i> Add Picture</a>
