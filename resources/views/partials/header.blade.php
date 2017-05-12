@@ -32,9 +32,6 @@
                         <a href="/admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="/profile"><i class="fa fa-fw fa-bar-chart-o"></i> Profile</a>
-                    </li>
-                    <li>
                         <a href="/views"><i class="fa fa-fw fa-table"></i> View All Gallery</a>
                     </li>
                     <li>

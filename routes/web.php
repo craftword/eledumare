@@ -19,8 +19,8 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
-Route::get('/term', function () {
-    return view('term');
+Route::get('/viewTable', function () {
+    return view('viewAllPics');
 });
 
 Route::get('image-gallery', 'ImageGalleryController@index');

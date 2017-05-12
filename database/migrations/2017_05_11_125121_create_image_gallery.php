@@ -18,6 +18,7 @@ class CreateImageGallery extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('image');
+            $table->string('tags');
             $table->timestamps();
         });
     }
