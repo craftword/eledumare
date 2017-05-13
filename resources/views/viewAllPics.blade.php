@@ -5,7 +5,7 @@
 @section('content')
 <div class="row">
 	<p>
-		<a href="/addPics" class="btn btn-lg btn-success">Add New Image </a>
+		<a href="/addImage" class="btn btn-lg btn-success">Add New Image </a>
 	</p>
 	<table id="example2" class="table table-bordered table-hover">
                     <thead>

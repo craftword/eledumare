@@ -35,7 +35,7 @@
                         <a href="/viewTable"><i class="fa fa-fw fa-table"></i> View All Gallery</a>
                     </li>
                     <li>
-                        <a href="/addPics"><i class="fa fa-fw fa-camera"></i> Add Picture</a>
+                        <a href="/addImage"><i class="fa fa-fw fa-camera"></i> Add Picture</a>
                     </li>
                 </ul>
             </div>
