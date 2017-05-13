@@ -19,14 +19,11 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
-Route::get('/viewTable', function () {
-    return view('viewAllPics');
-});
 
-
-Route::get('image-gallery', 'ImageGalleryController@index');
-Route::post('image-gallery', 'ImageGalleryController@upload');
-Route::delete('image-gallery/{id}', 'ImageGalleryController@destroy');
+Route::get('viewTable', 'viewImageController@index');
+Route::post('viewTable', 'viewImageController@edit');
+Route::post('viewTable', 'viewImageController@show');
+Route::delete('viewTable/{id}', 'viewImageController@destroy');
 
 
 Route::get('/addImage','addImageController@index');
