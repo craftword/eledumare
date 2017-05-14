@@ -10,28 +10,20 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-});
+
 // Client side route
-Route::get('/', 'homeIndexController@homeIndex');
+Route::get('/', 'homeIndexController@index');
 Route::get('/{id}', 'homeIndexController@view');
 Route::get('/{id}', 'homeIndexController@like');
 Route::post('/', 'homeIndexController@view');
 Route::post('/', 'homeIndexController@like');
 Route::get('/{id}', 'homeIndexController@show');
 
-Route::get('/admin', function () {
-    return view('admin');
+
+// Admin Route
+Route::group(array('namespace'=>'Admin'), function()
+{
+	Route::get('/admin', array('as' => 'admin', 'uses' => 'viewImageController@index'));
+
 });
 
-
-
-Route::get('viewTable', 'viewImageController@index');
-Route::post('viewTable', 'viewImageController@edit');
-Route::post('viewTable', 'viewImageController@show');
-Route::delete('viewTable/{id}', 'viewImageController@destroy');
-
-
-Route::get('/addImage','addImageController@index');
-Route::post('/addImage','addImageController@storeImage');

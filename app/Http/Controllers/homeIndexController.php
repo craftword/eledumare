@@ -7,7 +7,7 @@ use DB;
 
 class homeIndexController extends Controller
 {
-    public function homeIndex(){
+    public function index(){
 		$images = DB::select('select * from image_gallery');
 		return view('welcome',['images'=>$images]);
 	}

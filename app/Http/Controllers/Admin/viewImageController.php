@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\ImageGallery;
 use DB;
 
@@ -10,13 +11,13 @@ class viewImageController extends Controller
 {
     public function index(){
 		$images = DB::select('select * from image_gallery');
-		return view('viewAllPics',['images'=>$images]);
+		return view('Admin.viewAllPics',['images'=>$images]);
 	}
 
 	 public function show($id)
     {
          $image = ImageGallery::find($id);
-         return view('viewPics', array('image' => $image));
+         return view('Admin.viewPics', array('image' => $image));
     }
 
     /**
@@ -25,7 +26,7 @@ class viewImageController extends Controller
     public function edit($id)
     {
          $image = ImageGallery::find($id);
-         return view('editPics', array('image' => $image)); 
+         return view('Admin.editPics', array('image' => $image)); 
     }
 
     /**
