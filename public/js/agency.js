@@ -32,6 +32,7 @@
 
 
 
-    // Modal javascript for ajax call  
+    // Modal javascript for ajax call 
+     
 
 })(jQuery); // End of use strict

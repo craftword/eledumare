@@ -22,6 +22,7 @@ Route::group(array('namespace'=>'Admin'), function()
 {
 	Route::get('/admin', array('as' => 'admin', 'uses' => 'adminController@index'));
 	Route::get('/listTable', array('as' => 'admin', 'uses' => 'adminController@tableListOfImages'));
+	Route::get('/viewImage/{id}', array('as' => 'admin', 'uses' => 'adminController@show'));
 
 });
 

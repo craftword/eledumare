@@ -46,7 +46,7 @@ class adminController extends Controller
 	 public function show($id)
     {
          $image = ImageGallery::find($id);
-         return view('Admin.viewPics', array('image' => $image));
+         return view('Admin.viewImage', array('image' => $image));
     }
 
     /**
