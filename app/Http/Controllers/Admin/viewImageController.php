@@ -17,13 +17,13 @@ class viewImageController extends Controller
     }
     public function index(){
 		$images = DB::select('select * from image_gallery');
-		return view('Admin.viewAllPics',['images'=>$images]);
+        return view('Admin.viewListOfImages',['images'=>$images]);
 	}
 
 	 public function show($id)
     {
          $image = ImageGallery::find($id);
-         return view('Admin.viewPics', array('image' => $image));
+         return view('Admin.viewImage', array('image' => $image));
     }
 
     /**
@@ -32,7 +32,7 @@ class viewImageController extends Controller
     public function edit($id)
     {
          $image = ImageGallery::find($id);
-         return view('Admin.editPics', array('image' => $image)); 
+         return view('Admin.editImage', array('image' => $image)); 
     }
 
     /**
