@@ -13,11 +13,8 @@
 
 // Client side route
 Route::get('/', 'homeIndexController@index');
-Route::get('/{id}', 'homeIndexController@view');
-Route::get('/{id}', 'homeIndexController@like');
-Route::post('/', 'homeIndexController@view');
-Route::post('/', 'homeIndexController@like');
-Route::get('/{id}', 'homeIndexController@show');
+Route::get('/show/{id}', 'homeIndexController@show');
+
 
 
 // Admin Route
