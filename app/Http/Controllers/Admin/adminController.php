@@ -40,7 +40,7 @@ class adminController extends Controller
 
     public function tableListOfImages(){
 		$images = DB::select('select * from image_gallery');
-		return view('Admin.viewAllPics',['images'=>$images]);
+		return view('Admin.viewListOfImages',['images'=>$images]);
 	}
 
 	 public function show($id)

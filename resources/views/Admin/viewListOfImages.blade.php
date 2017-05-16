@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('page', 'All Pictures In The Gallery')
+@section('page', 'All Images In The Gallery')
 
 @section('content')
 <div class="row">
