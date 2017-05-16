@@ -24,7 +24,7 @@
 							<td>{{ $images->title }}</td>
 							<td>{{ $images->description }}</td>
 							<td>{{ $images->created_at }}</td>
-							<td><a href="viewImage/{{ $images->id }}">View </a> | <a href="images/{{ $images->id }}/edit">Edit </a> | <a href='images/{{ $images->id }}/delete'>Delete</a>
+							<td><a href="/{{ $images->id }}">View </a> | <a href="images/{{ $images->id }}/edit">Edit </a> | <a href='images/{{ $images->id }}/delete'>Delete</a>
 
 							</td>
 						</tr>

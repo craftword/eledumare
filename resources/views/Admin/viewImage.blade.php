@@ -1,18 +1,17 @@
 @extends('layouts.master')
 
-@section('page', 'View Of Image')
+@section('page', '')
 
 @section('content')
-
 	<div class="row">
 		<div class="col-md-6 col-sm-6">
-			<img src="{{$images->image}}" class="img-responsive" alt="">
+			<img src="{{$image->image}}" class="img-responsive" alt="">
 		</div>
 		<div class="col-md-6 col-sm-6">
-			{{ $images->id }}<br />
-			{{ $images->title }}<br />
-			{{ $images->description }}<br />
-		    {{ $images->created_at }}
+			ID: {{ $image->id }}<br />
+			Title: <strong>{{ $image->title }}</strong> <br />
+			Description: {{ $image->description }}<br />
+		    Date Created: {{ $image->created_at }}
 		</div>
 
 	</div>
