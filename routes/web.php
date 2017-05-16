@@ -13,18 +13,19 @@
 
 // Client side route
 Route::get('/', 'homeIndexController@index');
-Route::get('/show/{id}', 'homeIndexController@show');
+
 
 
 
 // Admin Route
 Route::group(array('namespace'=>'Admin'), function()
 {
-	Route::get('/admin', array('as' => 'admin', 'uses' => 'viewImageController@index'));
+	Route::get('/admin', array('as' => 'admin', 'uses' => 'adminController@index'));
+	Route::get('/listTable', array('as' => 'admin', 'uses' => 'adminController@tableListOfImages'))
 
 });
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+

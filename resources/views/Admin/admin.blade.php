@@ -9,11 +9,11 @@
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <i class="fa fa-camera fa-5x"></i>
+                                        <i class="fa fa-user fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">26</div>
-                                        <div>Total Number of Pictures!</div>
+                                        <div class="huge">{{$usersCounts}}</div>
+                                        <div>Total Number of Members!</div>
                                     </div>
                                 </div>
                             </div>
@@ -28,7 +28,7 @@
                                         <i class="fa fa-eye fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">12</div>
+                                        <div class="huge">{{$views}}</div>
                                         <div>Total Number of Views!</div>
                                     </div>
                                 </div>
@@ -44,7 +44,7 @@
                                         <i class="fa fa-thumbs-up fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">124</div>
+                                        <div class="huge">{{$likes}}</div>
                                         <div>Total Number of Likes!</div>
                                     </div>
                                 </div>
@@ -57,11 +57,11 @@
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <i class="fa fa-download fa-5x"></i>
+                                        <i class="fa fa-camera fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">13</div>
-                                        <div>Total Number of Download!</div>
+                                        <div class="huge">{{$imagesCount}}</div>
+                                        <div>Total Number of Images!</div>
                                     </div>
                                 </div>
                             </div>
