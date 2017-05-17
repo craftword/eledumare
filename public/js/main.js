@@ -24,6 +24,10 @@ $(function () {
 	    });
 	});*/
 
+	// notification for delete button
+	$( '#delete' ).on( 'submit', function(e) {
+	   confirm("Are you sure, do you really want to delete Image?");
+	});
 
 
 

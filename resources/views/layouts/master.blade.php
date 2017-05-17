@@ -12,15 +12,15 @@
     <title>Eledumare Photography Admin</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/admin.css" rel="stylesheet">
+    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <!-- Database table -->
-    <link rel="stylesheet" href="vendor/datatables/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="{{ asset('vendor/datatables/dataTables.bootstrap.css') }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

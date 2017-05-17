@@ -22,9 +22,8 @@ Route::group(array('namespace'=>'Admin'), function()
 {
 	Route::get('/admin', array('as' => 'admin', 'uses' => 'adminController@index'));
 	Route::resource('listTable','viewImageController');
-	//Route::get('/listTable', array('as' => 'listTable', 'uses' => 'adminController@tableListOfImages'));
-	//Route::get('/{id}', array('as' => 'show', 'uses' => 'adminController@show'));
-	//Route::get('/edit/{id}', array('as' => 'admin', 'uses' => 'adminController@edit'));
+	Route::get('/addImage', array('as' => 'create', 'uses' => 'addImageController@index'));
+	Route::post('/addImage','addImageController@storeImage');
 });
 
 

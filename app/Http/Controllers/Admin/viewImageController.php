@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\ImageGallery;
 use DB;
+use Illuminate\Http\RedirectResponse;
+use App\likes;
+use App\views;
 
 class viewImageController extends Controller
 {   
@@ -41,12 +44,20 @@ class viewImageController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $make = $request->input('make');
-         $model = $request->input('model');
-         $produce = $request->input('produced_on');
-         DB::update('update cars set make = ?, model=?, produced_on=? where id = ?',[$make, $model, $produce,$id]);
+         $image = ImageGallery::find($id);
+         $image->title = $request->input('title');
+         $image->description = $request->input('description');
+         $image->tag = $request->input('tag');
+
+        $image->save();
+
+        // redirect
+        return Redirect::to('listTable');
+
+        /*DB::update('update cars set make = ?, model=?, produced_on=? where id = ?',[$make, $model, $produce,$id]);
+         echo $title . "----". $description. "---". $tag . "---". $id."<br />";
          echo "Record updated successfully.<br/>";
-         echo '<a href="cars/">Click Here</a> to go back.';
+         echo '<a href="cars/">Click Here</a> to go back.';*/
     }
 
     /**
@@ -55,7 +66,20 @@ class viewImageController extends Controller
      */
     public function destroy($id)
     {
-        DB::delete('delete from cars where id = ?',[$id]);
-        echo "Record deleted successfully.<br/>";
+       $image = ImageGallery::find($id); 
+       $likes = likes::where('pid', '=', $id)->firstOrFail();
+       $views = views::where('pid', '=', $id)->firstOrFail();
+
+       echo $likes->likes;
+       echo $views->views;
+
+       // Delete a single file
+       /* unlink($image->image);
+
+       $image->delete();
+       $likes->delete();
+       $views->delete();
+        */
+       
     }
 }

@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ImageGallery;
+use App\views;
+use App\likes;
 use DB;
 
 class homeIndexController extends Controller
@@ -18,15 +20,5 @@ class homeIndexController extends Controller
          return view('welcome', array('image' => $image));
     }
 
-    public function numberOfviews($id)
-    {
-         $image = ImageGallery::find($id);
-         return view('welcome', array('image' => $image));
-    }
-
-    public function numberOfLikes($id)
-    {
-         $image = ImageGallery::find($id);
-         return view('welcome', array('image' => $image));
-    }
+   
 }

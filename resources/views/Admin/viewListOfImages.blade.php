@@ -24,8 +24,21 @@
 							<td>{{ $images->title }}</td>
 							<td>{{ $images->description }}</td>
 							<td>{{ $images->created_at }}</td>
-							<td><a href="/listTable/{{ $images->id }}">View </a> | <a href="/listTable/{{ $images->id }}/edit">Edit </a> | <a href='images/{{ $images->id }}/delete'>Delete</a>
+							<td>
+                                <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
+                                <!-- we will add this later since its a little more complicated than the other two buttons -->
+                                {{ Form::open(array('url' => 'listTable/' . $images->id, 'class' => 'pull-right', 'id'=>'delete')) }}
+                                    {{ Form::hidden('_method', 'DELETE') }}
+                                    {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+                                {{ Form::close() }}
 
+                                <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
+                                <a class="btn btn-small btn-success" href="{{ URL::to('listTable/' . $images->id) }}"><i class="fa fa-eye"></i></a>
+
+                                <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
+                                <a class="btn btn-small btn-info" href="{{ URL::to('listTable/' . $images->id . '/edit') }}"><i class="fa fa-edit"></i></a>
+
+                                
 							</td>
 						</tr>
 
