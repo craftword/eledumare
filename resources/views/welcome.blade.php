@@ -30,6 +30,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" integrity="sha384-0s5Pv64cNZJieYFkXYOTId2HMA2Lfb6q2nAcx2n0RTLUnCAoTTsS0nKEO27XyKcY" crossorigin="anonymous"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
     <![endif]-->
+   
 
 </head>
 
@@ -135,7 +136,7 @@
             <div class="row">
                 @foreach ($images as $images)
                     <div class="col-md-4 col-sm-6 portfolio-item">
-                        <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                        <a href="#portfolioModal{{$images->id}}" class="portfolio-link" data-toggle="modal">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
                                 <i class="fa fa-plus fa-3x"></i>
@@ -145,11 +146,13 @@
                         </a>
                         <div class="portfolio-caption">
                             <h4>{{ $images->title}}</h4>
-                            <p class="text-muted"><i class="fa fa-thumbs-up" aria-hidden="true"></i> 123 | <i class="fa fa-eye" aria-hidden="true"></i> 345</p>
+                            <p class="text-muted"><a href='#' id='likes' value='{{$images->id}}'><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{$images->likes}} </a>| <i class="fa fa-eye" aria-hidden="true"></i> {{$images->views }}</p>
                         </div>
                     </div>
-                @endforeach 
+             @endforeach 
             </div>
+            <div id='sex'> </div>
+
         </div>
     </section>
 
@@ -398,10 +401,12 @@
             </div>
         </div>
     </footer>
-<!-- Portfolio Modals -->
+  
+    <!-- Portfolio Modals -->
     <!-- Use the modals below to showcase details about your portfolio projects! -->
     <!-- Portfolio Modal  -->
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="close-modal" data-dismiss="modal">
@@ -428,11 +433,9 @@
     </div>
     
     
-
     
-    <!-- jQuery -->
+     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
@@ -445,6 +448,35 @@
 
     <!-- Theme JavaScript -->
     <script src="js/agency.js"></script>
+    
+
+    <script type="text/javascript">
+     $( document ).ready(function() {
+
+
+
+
+
+
+
+
+        $( '#likes' ).on( 'click', function(e) {
+             e.preventDefault(); 
+            var id = $('#likes').val();
+            console.log("look");
+            /*$.ajax({
+                type:'POST',
+                url:'/view/'+id,
+                data:'_token=<?php echo csrf_token() ?>',
+                success:function(data){
+                //$("#msg").html(data.msg);
+                alert(data.msg);
+                }
+            });*/
+        });
+    });
+
+    </script>
 
 </body>
 

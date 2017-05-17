@@ -13,7 +13,7 @@
 
 // Client side route
 Route::get('/', 'homeIndexController@index');
-
+Route::post('/view/{id}', 'homeIndexController@update');
 
 
 
