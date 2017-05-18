@@ -4,11 +4,24 @@
 
 @section('content')
  <div class="row">
- 	<div class="col-md-offset-2 col-md-8 col-sm-8">
-		<!-- if there are creation errors, they will show here -->
-		{{ Html::ul($errors->all()) }}
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-		{{ Form::open(array('url' => '/addImage', 'files'=>'true', 'id'=>'form', 'method'=>'post')) }}
+    @if (session('status'))
+        <blockquote >
+            {{ session('status') }}
+        </blockquote>
+     @endif
+ 	<div class="col-md-offset-2 col-md-8 col-sm-8">
+		{{ Form::open(array('url' => '/listTable', 'files'=>'true', 'id'=>'form', 'method'=>'post')) }}
 
         {{ Form::token() }}
     <div class="row">

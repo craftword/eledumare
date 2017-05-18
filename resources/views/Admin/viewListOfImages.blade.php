@@ -4,8 +4,13 @@
 
 @section('content')
 <div class="row">
+  @if (session('status'))
+    <blockquote >
+        {{ session('status') }}
+    </blockquote>
+ @endif
 	<p>
-		<a href="/addImage" class="btn btn-lg btn-primary">Add New Image </a>
+		<a href="/listTable/create" class="btn btn-lg btn-primary">Add New Image </a>
 	</p>
 	<table id="example2" class="table table-bordered table-hover">
                     <thead>

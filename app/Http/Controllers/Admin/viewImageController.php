@@ -23,11 +23,53 @@ class viewImageController extends Controller
         return view('Admin.viewListOfImages',['images'=>$images]);
 	}
 
+    public function create()
+    {
+        return view('Admin.addImage');
+    }
+
+
+    public function store(Request $request)
+    {
+        $title = $request->input('title');
+            $description = $request->input('description');
+            $tag = $request->input('tag');
+            $file = $request->file('image');
+
+            $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+                // views and likes tables
+                
+                //Move Uploaded File
+                $destinationPath = 'img/portfolio';
+                $path = $destinationPath."/".$file->getClientOriginalName();
+                $file->move($destinationPath,$file->getClientOriginalName());
+                
+                $id = DB::table('image_gallery')->insertGetId(
+                    ['title' => $title, 'description' => $description, 'image' => $path, 'tag' => $tag]
+                    );
+                DB::table('views')->insert(
+                    ['pid' => $id, 'views' => 0]
+                );
+
+                DB::table('likes')->insert(
+                    ['pid' => $id, 'likes' => 0]
+                );
+                
+                // redirect
+                 return back()->with('status','Image Upload successful');
+    }
+
+
 	 public function show($id)
     {
          $image = ImageGallery::find($id);
          return view('Admin.viewImage', array('image' => $image));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -52,12 +94,9 @@ class viewImageController extends Controller
         $image->save();
 
         // redirect
-        return Redirect::to('listTable');
+         return redirect('listTable')->with('status', 'Image updated sucessfully!');
 
-        /*DB::update('update cars set make = ?, model=?, produced_on=? where id = ?',[$make, $model, $produce,$id]);
-         echo $title . "----". $description. "---". $tag . "---". $id."<br />";
-         echo "Record updated successfully.<br/>";
-         echo '<a href="cars/">Click Here</a> to go back.';*/
+        
     }
 
     /**

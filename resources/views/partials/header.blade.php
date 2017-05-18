@@ -33,14 +33,14 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
+                    <li>
                         <a href="/admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
                         <a href="/listTable"><i class="fa fa-fw fa-table"></i> View All Gallery</a>
                     </li>
                     <li>
-                        <a href="/addImage"><i class="fa fa-fw fa-camera"></i> Add Picture</a>
+                        <a href="/listTable/create"><i class="fa fa-fw fa-camera"></i> Add Picture</a>
                     </li>
                 </ul>
             </div>

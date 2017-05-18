@@ -30,7 +30,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" integrity="sha384-0s5Pv64cNZJieYFkXYOTId2HMA2Lfb6q2nAcx2n0RTLUnCAoTTsS0nKEO27XyKcY" crossorigin="anonymous"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
     <![endif]-->
-   
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
 
 </head>
 
@@ -149,9 +150,15 @@
                             <p class="text-muted"><a href='#' id='likes' value='{{$images->id}}'><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{$images->likes}} </a>| <i class="fa fa-eye" aria-hidden="true"></i> {{$images->views }}</p>
                         </div>
                     </div>
-             @endforeach 
+                    <script>
+                    var content = "{{$images->id}}<br />";
+                        content +="{{$images->title}}<br />";
+                        content +="{{$images->image}}<br />";
+                        $("#sex").append(content);
+                 </script>
+                @endforeach 
             </div>
-            <div id='sex'> </div>
+            <div id="sex"></div>
 
         </div>
     </section>
@@ -406,36 +413,10 @@
     <!-- Use the modals below to showcase details about your portfolio projects! -->
     <!-- Portfolio Modal  -->
 
-    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl">
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 col-lg-offset-2">
-                            <div class="modal-body">
-                                <!-- Project Details Go Here -->
-                                <h2>{{$images->title}}</h2>
-                                <img class="img-responsive img-centered" src="{{$images->image}}" alt="">
-                                <p>{{$images->description}}</p>
-                                <p>Date Uploaded: {{$images->created_at}}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     
     
     
-     <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    
     <!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
