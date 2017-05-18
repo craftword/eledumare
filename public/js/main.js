@@ -14,10 +14,11 @@ $(document).ready(function() {
 	
 
 	// notification for delete button
-	$( '#delete' ).on( 'submit', function(e) {
-		e.preventDefault(); 
-	   confirm("Are you sure, do you really want to delete Image?");
-	});
+	$(':submit').click(function(event){
+     if(!confirm("Are you sure you want to delete this Image")){
+        event.preventDefault();
+      }
+    });
 
 
 

@@ -23,18 +23,18 @@
                       </tr>
                     </thead>
                     <tbody id="scorelist">
-                     	@foreach ($images as $images)
+                     	@foreach ($images as $indexKey => $images)
                          <tr>
-							<td>{{ $images->id }}</td>
-							<td>{{ $images->title }}</td>
-							<td>{{ $images->description }}</td>
-							<td>{{ $images->created_at }}</td>
-							<td>
+              							<td>{{ $indexKey + 1 }}</td>
+              							<td>{{ $images->title }}</td>
+              							<td>{{ $images->description }}</td>
+              							<td>{{ $images->created_at }}</td>
+              							<td>
                                 <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                                 <!-- we will add this later since its a little more complicated than the other two buttons -->
-                                {{ Form::open(array('url' => 'listTable/' . $images->id, 'class' => 'pull-right', 'id'=>'delete')) }}
+                                {{ Form::open(array('url' => 'listTable/' . $images->id, 'class' => 'pull-right', 'id'=>'delete'. $images->id)) }}
                                     {{ Form::hidden('_method', 'DELETE') }}
-                                    {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+                                    {{ Form::submit('Delete', array('class' => 'btn btn-danger', 'type'=>'submit')) }}
                                 {{ Form::close() }}
 
                                 <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
@@ -44,8 +44,8 @@
                                 <a class="btn btn-small btn-info" href="{{ URL::to('listTable/' . $images->id . '/edit') }}"><i class="fa fa-edit"></i></a>
 
                                 
-							</td>
-						</tr>
+                							</td>
+                						</tr>
 
                      	@endforeach 
                       

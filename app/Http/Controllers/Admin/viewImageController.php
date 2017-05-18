@@ -109,16 +109,14 @@ class viewImageController extends Controller
        $likes = likes::where('pid', '=', $id)->firstOrFail();
        $views = views::where('pid', '=', $id)->firstOrFail();
 
-       echo $likes->likes;
-       echo $views->views;
-
        // Delete a single file
-       /* unlink($image->image);
+        unlink($image->image);
 
        $image->delete();
        $likes->delete();
        $views->delete();
-        */
-       
+        
+      // redirect
+         return redirect('listTable')->with('status', 'Image deleted sucessfully!');  
     }
 }
