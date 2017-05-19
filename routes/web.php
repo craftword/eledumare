@@ -13,7 +13,8 @@
 
 // Client side route
 Route::get('/', 'homeIndexController@index');
-Route::post('/view/{id}', 'homeIndexController@update');
+Route::get('/view/{id}', 'homeIndexController@view');
+
 
 
 
@@ -21,6 +22,7 @@ Route::post('/view/{id}', 'homeIndexController@update');
 Route::group(array('namespace'=>'Admin'), function()
 {
 	Route::get('/admin', array('as' => 'admin', 'uses' => 'adminController@index'));
+	Route::get('/morrisView', 'adminController@morrisViews');
 	Route::resource('listTable','viewImageController');
 	
 });

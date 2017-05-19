@@ -89,6 +89,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
+                    {{$image->title}} <br />
+                    {{$image->description}} <br />
+                    {{$image->image}} <br />
                     <h2 class="section-heading">About</h2>
                     <h3 class="section-subheading text-muted">This is a Photography agency interested to provide image solutions in every best way..</h3>
                 </div>

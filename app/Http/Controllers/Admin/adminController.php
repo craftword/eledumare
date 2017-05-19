@@ -31,12 +31,20 @@ class adminController extends Controller
             {
                $countLikes = $countLikes  +  $likes->likes;
             }
-
+        
         $countImages = ImageGallery::get()->count();
         $countUsers =  User::get()->count();
         
          return view('Admin.admin', ['usersCounts' => $countUsers, 'imagesCount' => $countImages, 'views' => $countViews, 'likes'=>$countLikes]);
     }
 
+    public function morrisViews()
+    {
+        // get data for morris chart
+        // views: title and number of views
+        $morrisViews = DB::select('SELECT g.title, v.views FROM image_gallery g JOIN views v ON g.id = v.pid ');
+        $morrisLikes = DB::select('SELECT g.title, v.likes FROM image_gallery g JOIN likes v ON g.id = v.pid ');
+        return response()->json(array('morrisViews'=> $morrisViews, 'morrisLikes'=>$morrisLikes), 200);
+    }
     
 }

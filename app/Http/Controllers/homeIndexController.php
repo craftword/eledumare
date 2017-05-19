@@ -15,13 +15,13 @@ class homeIndexController extends Controller
 		return view('welcome',['images'=>$images]);
 	}
 
-	public function update($id)
+	public function view($id)
     {
-         /*$image = ImageGallery::find($id);
-         return view('view', array('image' => $image));
-         */
-         $msg = "This is a simple message." . $id;
-        return response()->json(array('msg'=> $msg), 200);
+         $image = ImageGallery::find($id);
+         //return view('view', array('image' => $image));
+         return response()->json(array('image'=> $image), 200);
+         
+         
     }
 
    

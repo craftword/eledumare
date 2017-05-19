@@ -137,7 +137,7 @@
             <div class="row">
                 @foreach ($images as $images)
                     <div class="col-md-4 col-sm-6 portfolio-item">
-                        <a href="#portfolioModal{{$images->id}}" class="portfolio-link" data-toggle="modal">
+                        <a href="#portfolioModal" class="portfolio-link" data-toggle="modal" data-id="{{$images->id}}">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
                                 <i class="fa fa-plus fa-3x"></i>
@@ -147,18 +147,12 @@
                         </a>
                         <div class="portfolio-caption">
                             <h4>{{ $images->title}}</h4>
-                            <p class="text-muted"><a href='#' id='likes' value='{{$images->id}}'><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{$images->likes}} </a>| <i class="fa fa-eye" aria-hidden="true"></i> {{$images->views }}</p>
+                            <p class="text-muted"><a href='#' id='likes' data-id='{{$images->id}}'><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{$images->likes}} </a>| <i class="fa fa-eye" aria-hidden="true"></i> {{$images->views }}</p>
                         </div>
-                    </div>
-                    <script>
-                    var content = "{{$images->id}}<br />";
-                        content +="{{$images->title}}<br />";
-                        content +="{{$images->image}}<br />";
-                        $("#sex").append(content);
-                 </script>
+                    </div>                    
                 @endforeach 
             </div>
-            <div id="sex"></div>
+           
 
         </div>
     </section>
@@ -409,12 +403,29 @@
         </div>
     </footer>
   
-    <!-- Portfolio Modals -->
-    <!-- Use the modals below to showcase details about your portfolio projects! -->
-    <!-- Portfolio Modal  -->
-
-    
-    
+   <div class='portfolio-modal modal fade' id='portfolioModal' tabindex='-1' role='dialog' aria-hidden='true'>
+                        <div class='modal-dialog'>
+                            <div class='modal-content'>
+                                <div class='close-modal' data-dismiss='modal'>
+                                    <div class='lr'>
+                                        <div class='rl'>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='container'>
+                                    <div class='row'>
+                                        <div class='col-lg-8 col-lg-offset-2'>
+                                            <div class='modal-body'>
+                                                <!-- Project Details Go Here -->
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+       
     
     
     <!-- Bootstrap Core JavaScript -->
@@ -433,18 +444,35 @@
 
     <script type="text/javascript">
      $( document ).ready(function() {
+        // modal 
+        $('.portfolio-link').bind('click', function(e) {
+            e.preventDefault();
+            $('.modal-body').empty();
+            var id= $(this).attr('data-id');
+            $.ajax({
+                    type:'GET',
+                    url:'/view/'+id,
+                    success:function(data){
+                    var html = "<h2>"+data.image.title+"</h2>";
+                        html += "<img class='img-responsive img-centered' src='"+data.image.image+"' alt=''>";
+                        html += "<p><strong>Description:</strong> "+data.image.description +"</p>";
+                        html += "<p><strong>Tag:</strong> "+data.image.tag +"</p>";
+                        html += "<p><strong>Date Uploaded:</strong> "+data.image.created_at+"</p>";
+                        html += "<button type='button' class='btn btn-primary' data-dismiss='modal'><i class='fa fa-times'></i> Close Image</button>";
+                    $('.modal-body').append(html);
+                    
+            }});
+
+        });
 
 
 
 
 
-
-
-
-        $( '#likes' ).on( 'click', function(e) {
+        $('a[href=#]').on( 'click', function(e) {
              e.preventDefault(); 
-            var id = $('#likes').val();
-            console.log("look");
+            var id= $(this).attr('data-id');
+            alert(id);
             /*$.ajax({
                 type:'POST',
                 url:'/view/'+id,

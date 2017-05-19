@@ -20,7 +20,37 @@ $(document).ready(function() {
       }
     });
 
+// get data for morris chart views
+$.ajax({
+         type:'GET',
+         url:'/morrisView',
+         success:function(data){
+          var morrisViews = JSON.stringify(data.morrisViews);
+          var morrisLikes = JSON.stringify(data.morrisLikes);
+         // Line Chart
+             Morris.Line({
+            // ID of the element in which to draw the chart.
+            element: 'morris-line-chart',
+            // Chart data records -- each entry in this array corresponds to a point on
+            // the chart.
+            data: morrisViews,
+            // The name of the data record attribute that contains x-visitss.
+            xkey: 'title',
+            // A list of names of data record attributes that contain y-visitss.
+            ykeys: ['views'],
+            // Labels for the ykeys -- will be displayed when you hover over the
+            // chart.
+            labels: ['Visits'],
+            // Disables line smoothing
+            smooth: false,
+            resize: true
+            });
 
+
+
+     }});
+
+ 
 
 
 
