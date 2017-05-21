@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="_token" content="{!! csrf_token() !!}">
 
     <title>Eledumare Photography</title>
 
@@ -147,7 +148,7 @@
                         </a>
                         <div class="portfolio-caption">
                             <h4>{{ $images->title}}</h4>
-                            <p class="text-muted"><a href='#' id='likes' data-id='{{$images->id}}'><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{$images->likes}} </a>| <i class="fa fa-eye" aria-hidden="true"></i> {{$images->views }}</p>
+                            <p class="text-muted"><a href='#' class='likes' data-id='{{$images->id}}' value={{$images->likes}}><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{$images->likes}} </a>| <i class="fa fa-eye" aria-hidden="true"></i> {{$images->views }}</p>
                         </div>
                     </div>                    
                 @endforeach 
@@ -444,15 +445,22 @@
 
     <script type="text/javascript">
      $( document ).ready(function() {
+        $.ajaxSetup({
+                  headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                  }
+                })
         // modal 
         $('.portfolio-link').bind('click', function(e) {
             e.preventDefault();
             $('.modal-body').empty();
             var id= $(this).attr('data-id');
+
             $.ajax({
                     type:'GET',
                     url:'/view/'+id,
                     success:function(data){
+
                     var html = "<h2>"+data.image.title+"</h2>";
                         html += "<img class='img-responsive img-centered' src='"+data.image.image+"' alt=''>";
                         html += "<p><strong>Description:</strong> "+data.image.description +"</p>";
@@ -460,8 +468,11 @@
                         html += "<p><strong>Date Uploaded:</strong> "+data.image.created_at+"</p>";
                         html += "<button type='button' class='btn btn-primary' data-dismiss='modal'><i class='fa fa-times'></i> Close Image</button>";
                     $('.modal-body').append(html);
+
                     
             }});
+
+
 
         });
 
@@ -469,19 +480,22 @@
 
 
 
-        $('a[href=#]').on( 'click', function(e) {
+        $('a.likes').on( 'click', function(e) {
              e.preventDefault(); 
-            var id= $(this).attr('data-id');
-            alert(id);
-            /*$.ajax({
-                type:'POST',
-                url:'/view/'+id,
-                data:'_token=<?php echo csrf_token() ?>',
+            var id = $(this).attr('data-id');
+            var likes = $(this).attr('value');
+            //alert(likes);
+            $.ajax({
+                type:'PUT',
+                url:'/updateLikes/'+ id,
+                data:"likes=likes",
+                //contentType: 'application/json',
                 success:function(data){
-                //$("#msg").html(data.msg);
-                alert(data.msg);
-                }
-            });*/
+                //$(this).html('<i class="fa fa-thumbs-up" aria-hidden="true"></i>'+ data.msg);
+                  document.location.reload();
+                },
+
+            });
         });
     });
 

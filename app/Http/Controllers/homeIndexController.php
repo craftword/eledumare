@@ -17,12 +17,34 @@ class homeIndexController extends Controller
 
 	public function view($id)
     {
-         $image = ImageGallery::find($id);
-         //return view('view', array('image' => $image));
+         $image = ImageGallery::find($id);              
          return response()->json(array('image'=> $image), 200);
          
          
     }
 
+
+
+
+    public function updateLikes(Request $request, $id)
+    {
+        $totalLikes = DB::table('likes')->select('likes')->where('pid', '=', $id)->get();
+        $updatedLikes = $totalLikes[0]->likes + 1;
+        DB::table('likes')->where('pid', '=', $id)->update(['likes' => $updatedLikes]);
+         //$image->save();
+         //$msg = "likes updated successfully";
+         return response()->json(array('msg'=>$updatedLikes), 200);
+         
+         
+    }
+
+    public function updateViews(Request $request, $id)
+    {
+         $views = views::find($id);
+         $views->views = $request->input('views');
+         $image->save();
+
+             
+    }
    
 }

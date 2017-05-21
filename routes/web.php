@@ -14,6 +14,8 @@
 // Client side route
 Route::get('/', 'homeIndexController@index');
 Route::get('/view/{id}', 'homeIndexController@view');
+Route::put('/updateLikes/{id}', 'homeIndexController@updateLikes');
+Route::put('/updateviews/{id}', 'homeIndexController@updateViews');
 
 
 
