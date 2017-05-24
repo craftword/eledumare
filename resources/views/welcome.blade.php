@@ -445,40 +445,53 @@
 
     <script type="text/javascript">
      $( document ).ready(function() {
+       
         $.ajaxSetup({
                   headers: {
                     'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
                   }
                 })
+
         // modal 
         $('.portfolio-link').bind('click', function(e) {
-            e.preventDefault();
-            $('.modal-body').empty();
-            var id= $(this).attr('data-id');
+                e.preventDefault();
+                $('.modal-body').empty();
+                var id= $(this).attr('data-id');
 
-            $.ajax({
-                    type:'GET',
-                    url:'/view/'+id,
-                    success:function(data){
+                // update number of views
+                $.ajax({
+                        type:'PUT',
+                        url:'/updateViews/'+ id,
+                        success:function(data){
+                            showView(id);
 
-                    var html = "<h2>"+data.image.title+"</h2>";
-                        html += "<img class='img-responsive img-centered' src='"+data.image.image+"' alt=''>";
-                        html += "<p><strong>Description:</strong> "+data.image.description +"</p>";
-                        html += "<p><strong>Tag:</strong> "+data.image.tag +"</p>";
-                        html += "<p><strong>Date Uploaded:</strong> "+data.image.created_at+"</p>";
-                        html += "<button type='button' class='btn btn-primary' data-dismiss='modal'><i class='fa fa-times'></i> Close Image</button>";
-                    $('.modal-body').append(html);
+                                            
+                }});
 
-                    
-            }});
-
-
+           
 
         });
 
+         // show modal with dynamic data
+            function showView(id) {
+                    $.ajax({
+                            type:'GET',
+                            url:'/view/'+id,
+                            success:function(data){
 
+                            var html = "<h2>"+data.image.title+"</h2>";
+                                html += "<img class='img-responsive img-centered' src='"+data.image.image+"' alt=''>";
+                                html += "<p><strong>Description:</strong> "+data.image.description +"</p>";
+                                html += "<p><strong>Tag:</strong> "+data.image.tag +"</p>";
+                                html += "<p><strong>Date Uploaded:</strong> "+data.image.created_at+"</p>";
+                                html += "<button type='button' class='btn btn-primary' data-dismiss='modal'id=''><i class='fa fa-times'></i> Close Image</button>";
+                            $('.modal-body').append(html);
 
+                            
+                    }});
 
+             }
+       
 
         $('a.likes').on( 'click', function(e) {
              e.preventDefault(); 

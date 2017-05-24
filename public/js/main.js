@@ -25,31 +25,23 @@ $.ajax({
          type:'GET',
          url:'/morrisView',
          success:function(data){
-          var morrisViews = JSON.stringify(data.morrisViews);
-          var morrisLikes = JSON.stringify(data.morrisLikes);
-         // Line Chart
-             Morris.Line({
-            // ID of the element in which to draw the chart.
-            element: 'morris-area-chart',
-            // Chart data records -- each entry in this array corresponds to a point on
-            // the chart.
-            data: morrisViews,
-            // The name of the data record attribute that contains x-visitss.
-            xkey: 'title',
-            // A list of names of data record attributes that contain y-visitss.
-            ykeys: ['views'],
-            // Labels for the ykeys -- will be displayed when you hover over the
-            // chart.
-            labels: ['Visits'],
-            // Disables line smoothing
-            smooth: false,
-            resize: true
+            
+              
+      // Bar Chart
+            Morris.Bar({
+                element: 'morris-bar-chart',
+                data: [data.morrisViews[0], data.morrisViews[1], data.morrisViews[2], data.morrisViews[3], data.morrisViews[4], data.morrisViews[5]],
+                xkey: 'title',
+                ykeys: ['views'],
+                labels: ['Views'],
+                barRatio: 0.4,
+                xLabelAngle: 35,
+                hideHover: 'auto',
+                resize: true
             });
+            }
 
-
-
-     }});
-
+        });  
  
 
 

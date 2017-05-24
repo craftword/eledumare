@@ -40,11 +40,11 @@ class homeIndexController extends Controller
 
     public function updateViews(Request $request, $id)
     {
-         $views = views::find($id);
-         $views->views = $request->input('views');
-         $image->save();
-
-             
+        $totalViews = DB::table('views')->select('views')->where('pid', '=', $id)->get();
+        $updatedViews = $totalViews[0]->views + 1;
+        DB::table('views')->where('pid', '=', $id)->update(['views' => $updatedViews]);
+        
+        return response()->json(array('msg'=>$updatedViews), 200);     
     }
    
 }
